@@ -1,5 +1,6 @@
 #formContainer {
   max-width: 992px;
+  min-height: 50%;
 }
 
 .center {

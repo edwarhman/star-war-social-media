@@ -47,11 +47,15 @@ export function Login() {
       className="form-container shadow-lg border-end border-bottom border-5 border-warning rounded mx-auto container bg-white text-center center"
     >
       <div className="row">
-        <img
-          className="form-image col-8 p-0 rounded-start"
-          src={formImage}
-        ></img>
-        <form className="col-4 px-5 bold" onSubmit={handleSubmit}>
+        {window.innerWidth > 700 ? (
+          <img
+            className="form-image col-8 p-0 rounded-start"
+            src={formImage}
+          ></img>
+        ) : (
+          console.log(window.innerWidth)
+        )}
+        <form className="col-sm-4 px-5 bold" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="userName" className="form-label">
               User Name
