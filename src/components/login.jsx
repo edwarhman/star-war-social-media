@@ -1,8 +1,26 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import './login.css'
 import formImage from '../form.gif'
+import apiClient from '../utils/axios'
+import { fetchPeople } from './loginSlice'
 
 export function Login() {
+  const dispatch = useDispatch()
+  const people = useSelector((state) => state.login.people)
+
+  useEffect(() => {
+    if (people.length <= 0) {
+      const response = apiClient
+        .get('people')
+        .then((res) => res.data.results)
+        .catch(() => [])
+
+      dispatch(fetchPeople(response))
+    }
+  }, [])
+
   return (
     <div
       id="formContainer"
