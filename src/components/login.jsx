@@ -65,6 +65,7 @@ export function Login() {
               id="userName"
               aria-describedby="user"
               onChange={(event) => dispatch(setUserName(event.target.value))}
+              required
             />
           </div>
           <div className="mb-3">
@@ -76,6 +77,7 @@ export function Login() {
               className="form-control"
               id="password"
               onChange={(event) => dispatch(setPassword(event.target.value))}
+              required
             />
           </div>
           <button type="submit" className="btn btn-warning">
