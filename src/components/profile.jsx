@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import apiClient from '../utils/axios'
 import { fetchFilm } from './profileSlice'
 import Table from './Table'
+
 export function Profile() {
   const dispatch = useDispatch()
   const films = useSelector((state) => state.profile.films)
