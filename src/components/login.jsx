@@ -7,6 +7,7 @@ import apiClient from '../utils/axios'
 import { fetchPeople, setPassword, setUserName, setError } from './loginSlice'
 import { AES } from 'crypto-js'
 import { useNavigate } from 'react-router-dom'
+import { Toast } from 'react-bootstrap'
 
 export function Login() {
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ export function Login() {
   const people = useSelector((state) => state.login.people)
   const password = useSelector((state) => state.login.password)
   const userName = useSelector((state) => state.login.userName)
+  const error = useSelector((state) => state.login.error)
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -65,6 +67,7 @@ export function Login() {
               id="userName"
               aria-describedby="user"
               onChange={(event) => dispatch(setUserName(event.target.value))}
+              required
             />
           </div>
           <div className="mb-3">
@@ -76,11 +79,17 @@ export function Login() {
               className="form-control"
               id="password"
               onChange={(event) => dispatch(setPassword(event.target.value))}
+              required
             />
           </div>
           <button type="submit" className="btn btn-warning">
             Login
           </button>
+          {error ? (
+            <Toast bg="danger" className="mt-3">
+              Invalid values
+            </Toast>
+          ) : null}
         </form>
       </div>
     </div>
