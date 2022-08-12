@@ -1,15 +1,16 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { ListGroup, Table } from 'react-bootstrap'
+import { ListGroup } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import apiClient from '../utils/axios'
 import { fetchFilm } from './profileSlice'
-
+import Table from './Table'
 export function Profile() {
   const dispatch = useDispatch()
   const films = useSelector((state) => state.profile.films)
   const user = JSON.parse(localStorage.getItem('user'))
+
   useEffect(() => {
     user.films.forEach((film) => {
       const id = film.match(/[0-9]+/g)[0]
@@ -31,21 +32,11 @@ export function Profile() {
   ]
 
   const filmsElements = () => {
-    films.map((film) => (
-      <tr key={film.title}>
-        {' '}
-        {{
-          title: film.title,
-          director: film.director,
-          openingCrawl: film.opening_crawl,
-          detail: <NavLink to={film.id}>Details</NavLink>,
-        }
-          .keys()
-          .map((col, idx) => (
-            <td key={idx}>{col}</td>
-          ))}
-      </tr>
-    ))
+    return films.map((film) => ({
+      title: film.title,
+      director: film.director,
+      openingCrawl: film.opening_crawl,
+    }))
   }
 
   return (
@@ -57,9 +48,8 @@ export function Profile() {
         <ListGroup.Item as="li">{user.created}</ListGroup.Item>
         <ListGroup.Item as="li">
           <h2>Films</h2>
-          <Table headers={headers} items={filmsElements}>
-            <tbody>{filmsElements}</tbody>
-          </Table>
+          <Table films={filmsElements()}></Table>
+          <h3>{JSON.stringify(headers)}</h3>
         </ListGroup.Item>
       </ListGroup>
     </div>
