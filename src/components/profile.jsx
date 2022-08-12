@@ -28,7 +28,6 @@ export function Profile() {
     { text: 'Title', value: 'title' },
     { text: 'Director', value: 'director' },
     { text: 'Opening Crawl', value: 'opening_crawl' },
-    { text: 'Detail', value: 'detail' },
   ]
 
   const filmsElements = () => {
@@ -45,11 +44,10 @@ export function Profile() {
         <ListGroup.Item as="li">
           <h1>{user.name}</h1>
         </ListGroup.Item>
-        <ListGroup.Item as="li">{user.created}</ListGroup.Item>
+        <ListGroup.Item as="li">{`Created: ${user.created}`}</ListGroup.Item>
         <ListGroup.Item as="li">
           <h2>Films</h2>
-          <Table films={filmsElements()}></Table>
-          <h3>{JSON.stringify(headers)}</h3>
+          <Table films={filmsElements()} headers={headers}></Table>
         </ListGroup.Item>
       </ListGroup>
     </div>
