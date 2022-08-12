@@ -29,6 +29,6 @@ La compilación se minimiza y los nombres de archivo incluyen los hashes.\
 ## Usuarios de ejemplo
 
 -usuario:
-     Lucas Skywalker
+Lucas Skywalker
 clave:
-     U2FsdGVkX1+0FCI8zOfeHVRAi8YZ6ziSU9Fmv//jYfI=
+U2FsdGVkX1+0FCI8zOfeHVRAi8YZ6ziSU9Fmv//jYfI=
