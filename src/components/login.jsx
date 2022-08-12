@@ -57,7 +57,6 @@ export function Login() {
         ) : (
           console.log(window.innerWidth)
         )}
-        {error ? <Toast>Invalid values</Toast> : null}
         <form className="col-sm-4 px-5 bold" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="userName" className="form-label">
@@ -86,6 +85,11 @@ export function Login() {
           <button type="submit" className="btn btn-warning">
             Login
           </button>
+          {error ? (
+            <Toast bg="danger" className="mt-3">
+              Invalid values
+            </Toast>
+          ) : null}
         </form>
       </div>
     </div>
